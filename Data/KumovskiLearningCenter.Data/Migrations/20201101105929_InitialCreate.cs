@@ -396,8 +396,8 @@
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     LectureId = table.Column<int>(nullable: false),
-                    Path = table.Column<string>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
+                    Path = table.Column<string>(maxLength: 100, nullable: false),
+                    Type = table.Column<string>(maxLength: 50, nullable: false),
                 },
                 constraints: table =>
                 {
