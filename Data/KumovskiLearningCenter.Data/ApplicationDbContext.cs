@@ -26,6 +26,24 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<AccountCourse> AccountsCourses { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Currency> Currencies { get; set; }
+
+        public DbSet<Lecture> Lectures { get; set; }
+
+        public DbSet<Note> Notes { get; set; }
+
+        public DbSet<Resource> Resources { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
+
+        public DbSet<WalletItem> WalletItems { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -47,6 +65,8 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<AccountCourse>().HasKey(x => new { x.AccountId, x.CourseId });
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
